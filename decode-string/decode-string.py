@@ -1,21 +1,21 @@
 class Solution:
     def decodeString(self, s: str) -> str:
-        times_stack = []
+        int_stack = []
         str_stack = []
-        temp_str = ""
+        ans = ""
         times = ""
-        for char in s:
+        for temp in s:
             # check if number
-            if ord(char) >= ord('0') and ord(char) <= ord('9'):
-                times = times + char
-            elif char == "[":
-                times_stack.append(int(times))
-                str_stack.append(temp_str)
-                temp_str = ""
+            if temp.isdigit():
+                times = times + temp
+            elif temp == "[":
+                int_stack.append(int(times))
+                str_stack.append(ans)
+                ans = ""
                 times = ""
-            elif char == "]":
-                temp_str = times_stack.pop() * temp_str
-                temp_str = str_stack.pop() + temp_str
+            elif temp == "]":
+                ans = int_stack.pop() * ans
+                ans = str_stack.pop() + ans
             else:
-                temp_str = temp_str + char
-        return temp_str
+                ans = ans + temp
+        return ans
