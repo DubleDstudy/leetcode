@@ -5,7 +5,6 @@ class Solution:
         ans = ""
         times = ""
         for temp in s:
-            # check if number
             if temp.isdigit():
                 times = times + temp
             elif temp == "[":
